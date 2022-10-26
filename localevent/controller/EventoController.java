@@ -49,4 +49,25 @@ public class EventoController {
         return ResponseEntity.status(HttpStatus.OK).body(eventoOptional.get());
     }
 
+    @DeleteMapping("/id")
+    public ResponseEntity<Object> deleteEvento(@PathVariable(value = "id") UUID id, @RequestBody @Valid EventoDto eventoDto) {
+        Optional<Evento> eventoOptional = eventoService.findById(id);
+        if(eventoOptional.isEmpty()) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Evento não encontrado");
+        }
+        eventoService.delete(eventoOptional.get());
+        return ResponseEntity.status(HttpStatus.OK).body("Evento deletado com sucesso");
+    }
+
+    @PutMapping("/id")
+    public ResponseEntity<Object> updateEvento(@PathVariable(value = "id") UUID id, @RequestBody @Valid EventoDto eventoDto) {
+        Optional<Evento> eventoOptional = eventoService.findById(id);
+        if(eventoOptional.isEmpty()) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Evento não encontrado");
+        }
+        var evento = new Evento();
+        BeanUtils.copyProperties(eventoDto, evento);
+        evento.setId(eventoOptional.get().getId());
+        return ResponseEntity.status(HttpStatus.OK).body(eventoService.save(evento));
+    }
 }

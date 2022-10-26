@@ -11,6 +11,7 @@ import java.util.UUID;
 
 @Service
 public class EventoService {
+    
     final EventoRepository eventoRepository;
 
     public EventoService(EventoRepository eventoRepository){
@@ -22,7 +23,6 @@ public class EventoService {
         return eventoRepository.save(evento);
     }
 
-
     public boolean existByDataAndLocalAndHorarioInicial(String data, String local, String horarioInicial) {
         return eventoRepository.existsByDataAndLocalAndHorarioInicial(data, local, horarioInicial);
     }
@@ -33,5 +33,10 @@ public class EventoService {
 
     public Optional<Evento> findById(UUID id) {
         return eventoRepository.findById(id);
+    }
+
+    @Transactional
+    public void delete(Evento evento) {
+        eventoRepository.delete(evento);
     }
 }

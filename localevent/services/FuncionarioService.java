@@ -31,7 +31,6 @@ public class FuncionarioService {
         return funcionarioRepository.findAll();
     }
 
-
     public Optional<Funcionario> findById(UUID id) {
         return funcionarioRepository.findById(id);
     }
