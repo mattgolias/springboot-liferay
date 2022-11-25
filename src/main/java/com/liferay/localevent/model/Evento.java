@@ -4,6 +4,7 @@ import lombok.*;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 
@@ -31,8 +32,9 @@ public class Evento {
     private String categoria;
 
     @Column(name = "data", length = 10)
+    @Temporal(TemporalType.DATE)
     @NotNull
-    private String data;
+    private Date data;
 
     @Column(name = "horarioInicial", length = 10)
     @NotNull

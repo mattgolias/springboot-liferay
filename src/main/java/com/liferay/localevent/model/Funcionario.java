@@ -1,7 +1,6 @@
 package com.liferay.localevent.model;
 
 import lombok.*;
-import com.liferay.localevent.model.Email;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
@@ -24,5 +23,5 @@ public class Funcionario {
 
     @Column(name = "emailFunc", length = 100)
     @NotNull
-    private String emailFunc;
+    private Email emailFunc;
 }

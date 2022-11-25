@@ -1,8 +1,10 @@
 package com.liferay.localevent.controller;
 
 import com.liferay.localevent.dto.FuncionarioDto;
+import com.liferay.localevent.dto.EmailDto;
 import com.liferay.localevent.model.Funcionario;
 import com.liferay.localevent.services.FuncionarioService;
+import com.liferay.localevent.services.EmailService;
 import org.springframework.beans.BeanUtils;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -25,7 +27,7 @@ public class FuncionarioController {
     }
 
     @PostMapping
-    public ResponseEntity<Object> saveFuncionario(@RequestBody @Valid FuncionarioDto funcionarioDto) {
+    public ResponseEntity<Object> saveFuncionario(@RequestBody @Valid FuncionarioDto funcionarioDto, EmailService emailService) {
         if(funcionarioService.existByEmailFunc(funcionarioDto.getEmailFunc())){
             return ResponseEntity.status(HttpStatus.CONFLICT).body("Conflito: Email já está em uso!");
         }
