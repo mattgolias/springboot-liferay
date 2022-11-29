@@ -1,7 +1,6 @@
 package com.liferay.localevent.controller;
 
 import com.liferay.localevent.dto.FuncionarioDto;
-import com.liferay.localevent.dto.EmailDto;
 import com.liferay.localevent.model.Funcionario;
 import com.liferay.localevent.services.FuncionarioService;
 import com.liferay.localevent.services.EmailService;
@@ -21,15 +20,20 @@ import java.util.UUID;
 public class FuncionarioController {
 
     final FuncionarioService funcionarioService;
+    final EmailService emailService;
 
-    public FuncionarioController(FuncionarioService funcionarioService) {
+    public FuncionarioController(FuncionarioService funcionarioService, EmailService emailService) {
         this.funcionarioService = funcionarioService;
+        this.emailService = emailService;
     }
 
     @PostMapping
-    public ResponseEntity<Object> saveFuncionario(@RequestBody @Valid FuncionarioDto funcionarioDto, EmailService emailService) {
+    public ResponseEntity<Object> saveFuncionario(@RequestBody @Valid FuncionarioDto funcionarioDto) {
         if(funcionarioService.existByEmailFunc(funcionarioDto.getEmailFunc())){
             return ResponseEntity.status(HttpStatus.CONFLICT).body("Conflito: Email já está em uso!");
+        }
+        if(!emailService.existByEmail(funcionarioDto.getEmailFunc())){
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Email não registrado no banco de dados");
         }
         var funcionario = new Funcionario();
         BeanUtils.copyProperties(funcionarioDto, funcionario);
