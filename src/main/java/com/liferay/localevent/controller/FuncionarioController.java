@@ -29,10 +29,10 @@ public class FuncionarioController {
 
     @PostMapping
     public ResponseEntity<Object> saveFuncionario(@RequestBody @Valid FuncionarioDto funcionarioDto) {
-        if(funcionarioService.existByEmailFunc(funcionarioDto.getEmailFunc())){
+        if(funcionarioService.existByEmail(funcionarioDto.getEmail())){
             return ResponseEntity.status(HttpStatus.CONFLICT).body("Conflito: Email já está em uso!");
         }
-        if(!emailService.existByEmail(funcionarioDto.getEmailFunc())){
+        if(!emailService.existByEmail(funcionarioDto.getEmail())){
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Email não registrado no banco de dados");
         }
         var funcionario = new Funcionario();

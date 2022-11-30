@@ -4,7 +4,6 @@ import lombok.*;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
-import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 
@@ -32,13 +31,12 @@ public class Evento {
     private String categoria;
 
     @Column(name = "data", length = 10)
-    @Temporal(TemporalType.DATE)
     @NotNull
-    private Date data;
+    private String data;
 
-    @Column(name = "horarioInicial", length = 10)
+    @Column(name = "horarioInicio", length = 10)
     @NotNull
-    private String horarioInicial;
+    private String horarioInicio;
 
     @Column(name = "horarioFinal", length = 10)
     @NotNull
@@ -46,10 +44,9 @@ public class Evento {
 
     @Column(name = "vagas", length = 5)
     @NotNull
-    private int vagas;
+    private String vagas;
 
     @Column(name = "criadorDoEvento", length = 100)
-    @NotNull
     private String criadorDoEvento;
 
     @Column(name = "descricao")
@@ -58,4 +55,20 @@ public class Evento {
     @Column(name = "inscritos", length = 100)
     @ElementCollection
     private List<Funcionario> inscritos;
+
+    @Column(name = "quantidade", length = 5)
+    private String quantidade;
+
+    @Column(name = "start")
+    private String start;
+
+    @Column(name = "status")
+    private String status;
+
+    @Column(name = "date")
+    private String date;
+
+    @Column(name = "email")
+    private String email;
+
 }

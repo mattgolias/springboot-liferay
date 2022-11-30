@@ -20,13 +20,9 @@ public class EventoDto {
     private String data;
 
     @NotBlank
-    private String horarioInical;
+    private String horarioInicio;
 
     @NotBlank
     private String horarioFinal;
 
-
-
-    @NotBlank
-    private String criadorDoEvento;
 }

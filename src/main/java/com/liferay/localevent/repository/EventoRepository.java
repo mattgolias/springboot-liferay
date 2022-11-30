@@ -10,5 +10,5 @@ import java.util.UUID;
 public interface EventoRepository extends JpaRepository<Evento, UUID> {
 
 
-    boolean existsByDataAndLocalAndHorarioInicial(String data, String local, String HorarioInicial);
+    boolean existsByDataAndLocalAndHorarioInicio(String data, String local, String HorarioInicio);
 }

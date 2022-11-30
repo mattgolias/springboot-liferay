@@ -11,5 +11,5 @@ public class FuncionarioDto {
     private String nome;
 
     @NotBlank
-    private String emailFunc;
+    private String email;
 }

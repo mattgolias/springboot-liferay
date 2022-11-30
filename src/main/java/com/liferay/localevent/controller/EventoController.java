@@ -27,7 +27,7 @@ public class EventoController {
 
     @PostMapping
     public ResponseEntity<Object> saveEvento(@RequestBody @Valid EventoDto eventoDto) {
-        if(eventoService.existByDataAndLocalAndHorarioInicial(eventoDto.getData(), eventoDto.getLocal(), eventoDto.getHorarioInical())) {
+        if(eventoService.existByDataAndLocalAndHorarioInicio(eventoDto.getData(), eventoDto.getLocal(), eventoDto.getHorarioInicio())) {
             return ResponseEntity.status(HttpStatus.CONFLICT).body("Conflito: Horário indisponível");
         }
         var evento = new Evento();

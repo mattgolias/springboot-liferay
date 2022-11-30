@@ -23,8 +23,8 @@ public class EventoService {
     }
 
 
-    public boolean existByDataAndLocalAndHorarioInicial(String data, String local, String horarioInicial) {
-        return eventoRepository.existsByDataAndLocalAndHorarioInicial(data, local, horarioInicial);
+    public boolean existByDataAndLocalAndHorarioInicio(String data, String local, String horarioInicio) {
+        return eventoRepository.existsByDataAndLocalAndHorarioInicio(data, local, horarioInicio);
     }
 
     public List<Evento> findAll() {

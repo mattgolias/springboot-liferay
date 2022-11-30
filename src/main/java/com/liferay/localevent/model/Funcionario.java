@@ -23,5 +23,5 @@ public class Funcionario {
 
     @Column(name = "emailFunc", length = 100)
     @NotNull
-    private String emailFunc;
+    private String email;
 }

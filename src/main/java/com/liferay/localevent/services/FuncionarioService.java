@@ -23,8 +23,8 @@ public class FuncionarioService {
         return funcionarioRepository.save(funcionario);
     }
 
-    public boolean existByEmailFunc(String email) {
-        return funcionarioRepository.existsByEmailFunc(email);
+    public boolean existByEmail(String email) {
+        return funcionarioRepository.existsByEmail(email);
     }
 
     public List<Funcionario> findAll() {

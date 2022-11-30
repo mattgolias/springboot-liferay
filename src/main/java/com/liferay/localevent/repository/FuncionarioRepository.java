@@ -9,5 +9,5 @@ import java.util.UUID;
 @Repository
 public interface FuncionarioRepository extends JpaRepository<Funcionario, UUID> {
 
-    boolean existsByEmailFunc(String emailFunc);
+    boolean existsByEmail(String email);
 }
