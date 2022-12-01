@@ -19,6 +19,7 @@ public class EventoService {
 
     @Transactional
     public Evento save(Evento evento) {
+        System.out.println(evento.getVagas());
         return eventoRepository.save(evento);
     }
 
